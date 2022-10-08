@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Aru Raharja</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+
+    <!-- Bootstrap CSS v5.x -->
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css" />
+
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.1.1/css/all.css"
+      integrity="sha384-O8whS3fhG2OnA5Kas0Y9l3cfpmYjapjI0E4theH4iuMD+pLhbf6JI0jIMfYcK3yZ"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body>
+    <!-- Header / Nav -->
+    <header id="header">
+      <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container">
+          <a class="navbar-brand py-3" href="#">
+            <img src="assets/img/Aru Raharja Logo.png" alt="" />
+          </a>
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarText"
+            aria-controls="navbarText"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarText">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-md-5">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="#"
+                  >Beranda</a
+                >
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="pages/tentang.html">Tentang Kami</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="pages/produk-detail.html"
+                  >Produk Detail</a
+                >
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Berita</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Karir</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Hubungi Kami</a>
+              </li>
+            </ul>
+            <span class="navbar-text">
+              <a href="#" data-bs-toggle="modal" data-bs-target="#modelsearch">
+                <i class="fas fa-search"></i>
+              </a>
+            </span>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main id="main"></main>
+
+    <!-- Footer -->
+    <footer id="footer" class="footer mt-auto py-3 bg-light">
+      <div class="container">
+        <span class="text-muted">Place sticky footer content here.</span>
+      </div>
+    </footer>
+
+    <!-- Modal search -->
+    <div
+      class="modal fade"
+      id="modelsearch"
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="modelTitleId"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog" role="document">
+        <div class="modal-content bg-transparent border-0">
+          <!-- <div class="modal-header">
+                    <h5 class="modal-title">Modal title</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div> -->
+          <div class="modal-body">
+            <h4>Search</h4>
+            <input type="text" class="form-control" />
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bootstrap JavaScript Libraries -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js"
+      integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk"
+      crossorigin="anonymous"
+    ></script>
+
+    <script src="assets/js/bootstrap.min.js"></script>
+    <!-- <script src="assets/js/main.js"></script> -->
+
+    <script>
+      let navlink = document.querySelectorAll(".nav-link");
+      console.log(navlink);
+      navlink;
+      for (let elm of navlink) {
+        elm.addEventListener("click", function (e) {
+          let page = e.target.getAttribute("href");
+          console.log(page);
+          e.preventDefault();
+          navlinkOnclick(page);
+        });
+      }
+
+      function navlinkOnclick(page) {
+        fetch(page)
+          .then((response) => {
+            return response.text();
+          })
+          .then((data) => {
+            document.querySelector("#main").innerHTML = data;
+          });
+      }
+    </script>
+  </body>
+</html>

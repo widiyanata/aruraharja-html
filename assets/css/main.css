@@ -1,0 +1,93 @@
+/* GLOBAL
+ ------------------------- */
+
+ .text-primary, a {
+    color: #1C52A0!important
+ }
+ .bg-primary {
+    background-color: #1C52A0!important
+ }
+
+ a {
+    text-decoration: none;
+ }
+
+ .bg-light-blue {
+    background-color: #F6F8FB;
+ }
+
+/* HOMEPAGE 
+------------------------*/
+.carousel-caption {
+    bottom: 35%;
+    text-align: left;
+    max-width: 30%;
+}
+
+.carousel-item h3 {
+    font-size: 30px;
+    line-height: 45px;
+    letter-spacing: .2px;
+}
+
+.carousel-item::before{
+    content: " ";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, #1C52A0 0%, rgba(28, 82, 160, 0.38) 65.89%);
+}
+
+.carousel-indicators {
+    justify-content: start;
+    margin-bottom: 7rem;
+}
+
+.servis .card-body {
+    padding: 2rem 2rem;
+}
+
+.servis-konten .card:hover{
+    background-color: #1C52A0;
+    color: #fff;
+}
+.servis-konten .card:hover .servis-konten .card-body a.btn.text-primary {
+    color: #fff!important;
+}
+.servis-konten .card:hover .btn {
+    color: #fff!important;
+}
+
+/* TENTANG
+------------------------- */
+.akhlak-left .akhlak:nth-child(2) {
+    margin-right: 50px;
+}
+.akhlak-right .akhlak:nth-child(2) {
+    margin-left: 50px;
+}
+
+/* Why us */
+#why-us {
+    background: linear-gradient(180deg, #2067A5 0%, #005299 100%);
+}
+/* ------------ */
+
+/* ------- END HOMEPAGE ------- */
+
+
+/* Footer */
+.newsletter {
+    padding: 6em 0!important;
+    /* background: #0056A1;
+    background-image: url('https://picsum.photos/1200/300'); */
+    background-image: linear-gradient(269.92deg, #0056A1 32.94%, rgba(0, 86, 161, 0) 270.21%), url('https://picsum.photos/1200/300');
+}
+
+.aru-log-icon {
+    width: 80px;
+    height: 80px;
+    padding: 1.2em;
+    background: #eee;
+    border-radius: 50%;
+}
