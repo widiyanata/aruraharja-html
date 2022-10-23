@@ -29,8 +29,8 @@
     <!-- Header / Nav -->
     <nav class="navbar navbar-expand-lg navbar-light sticky-top bg-white">
       <div class="container">
-        <a class="navbar-brand py-3" href="#">
-          <img src="assets/img/Aru Raharja Logo.png" alt="" />
+        <a class="navbar-brand py-3 nav-ajax" href="/">
+          <img class="nav-ajax" src="assets/img/Aru Raharja Logo.png" alt="" />
         </a>
         <button
           class="navbar-toggler"
@@ -62,10 +62,10 @@
               >
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="pages/berita.html">Berita</a>
+              <a class="nav-link" href="#">Berita</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="pages/berita-galeri.html">Galeri</a>
+              <a class="nav-link" href="#">Galeri</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="pages/karir.html">Karir</a>
@@ -76,7 +76,7 @@
             <li class="nav-item">
               <a class="nav-link" href="pages/kontak.html">Hubungi Kami</a>
             </li>
-            <li class="nav-item dropdown">
+            <li class="nav-item dropdown d-none">
               <button class="dropdown-toggle nav-link btn-link btn" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Layanan</button>
               <div class="dropdown-menu">
                 <a class="dropdown-item nav-link" href="pages/aru-contractor.html">Aru contractor</a>
@@ -258,46 +258,99 @@
 
     <script>
       // default load page
-      getPage("pages/homepage.html");
+      // getPage("pages/homepage.html");
 
-      let navlink = document.querySelectorAll("a.nav-link, .nav-ajax");
-      console.log(navlink);
-      navlink;
-      for (let elm of navlink) {
-        elm.addEventListener("click", function (e) {
-          let page = e.target.getAttribute("href");
-          console.log(page);
-          e.preventDefault();
-          getPage(page);
+      // let navlink = document.querySelectorAll("a.nav-link, .nav-ajax");
+      // console.log(navlink);
+      // navlink;
+      // for (let elm of navlink) {
+      //   elm.addEventListener("click", function (e) {
+      //     let page = e.target.getAttribute("href");
+      //     console.log(page);
+      //     e.preventDefault();
+      //     getPage(page);
 
-          if (page = 'pages/aru-space') {
-            console.log('aru space');
-            setTimeout(function() {
-              $(".owl-carousel").owlCarousel({
-                stagePadding: 200,
-                margin: 60,
-                items: 1,
-                center: true,
-                loop: true,
-                nav: true,
-                dots: true,
-              })
-            }, 500)
-          }
-        });
-      }
+      //     if (page = 'pages/aru-space') {
+      //       console.log('aru space');
+      //       setTimeout(function() {
+      //         $(".owl-carousel").owlCarousel({
+      //           stagePadding: 200,
+      //           margin: 60,
+      //           items: 1,
+      //           center: true,
+      //           loop: true,
+      //           nav: true,
+      //           dots: true,
+      //         })
+      //       }, 500)
+      //     }
+      //   });
+      // }
 
-      function getPage(page) {
-        fetch(page)
-          .then((response) => {
-            return response.text();
-          })
-          .then((data) => {
-            document.querySelector("#main").innerHTML = data;
-          });
-      }
+      // function getPage(page) {
+      //   fetch(page)
+      //     .then((response) => {
+      //       return response.text();
+      //     })
+      //     .then((data) => {
+      //       document.querySelector("#main").innerHTML = data;
+      //     });
+      // }
 
       
     </script>
+
+<script>
+  // default load page
+  getPage("pages/homepage.html");
+
+  let navlink = document.querySelectorAll("a.nav-link");
+  console.log(navlink);
+  navlink;
+  /*
+  for (let elm of navlink) {
+    elm.addEventListener("click", function (e) {
+      let page = e.target.getAttribute("href");
+      console.log(page);
+      e.preventDefault();
+      // remove active class
+      var current = document.getElementsByClassName("active");
+      current[0].className = current[0].className.replace(" active", "");
+      this.className += " active";
+      // e.classList.remove('active')
+      getPage(page);
+      // e.classList.add('active')
+    });
+  }*/
+  document.querySelector("body").addEventListener("click", function (e) {
+    if (e.target.classList.contains("nav-link") || e.target.classList.contains("nav-ajax")) {
+      
+      let page = e.target.getAttribute("href");
+      console.log(page);
+  console.log(e.target.tagName);
+      if (page!='#' && e.target.tagName=='A' && e.target.getAttribute('href').indexOf('#') != 0 ) {
+      e.preventDefault();
+        // remove active class
+        var current = document.getElementsByClassName("active");
+        current[0].className = current[0].className.replace(" active", "");
+        this.className += " active";
+        // e.classList.remove('active')
+        getPage(page);
+      }
+
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  });
+
+  function getPage(page) {
+    fetch(page)
+      .then((response) => {
+        return response.text();
+      })
+      .then((data) => {
+        document.querySelector("#main").innerHTML = data;
+      });
+  }
+</script>
   </body>
 </html>
